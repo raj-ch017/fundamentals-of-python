@@ -1,0 +1,728 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Introduction to Python &#8212; Fundamentals of Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Variables, Functions and Conditionals" href="nb2-2.html" />
+    <link rel="prev" title="Introduction" href="intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fundamentals of Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nb2-2.html">
+   Variables, Functions and Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nb3-2.html">
+   Loop - Over and Over
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="strings.html">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lists.html">
+   Lists and Tuples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dict.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   Exercise Book: Strings, Lists and Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="oop.html">
+   Object Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercise_notebook.html">
+   Exercise Book: Methods and Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="final_project-2.html">
+   Final Project - Word Cloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/raj-ch017/fundamentals_of_python/master?urlpath=tree/docs/nb1-2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/raj-ch017/fundamentals_of_python"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/raj-ch017/fundamentals_of_python/issues/new?title=Issue%20on%20page%20%2Fnb1-2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/nb1-2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-python">
+   What is Python?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#syntax">
+   Syntax
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#semantics">
+   Semantics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-1">
+   Program 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-and-keywords">
+   Functions and Keywords
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arithmetic-operators">
+   Arithmetic Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Introduction to Python</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-is-python">
+   What is Python?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#syntax">
+   Syntax
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#semantics">
+   Semantics
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-1">
+   Program 1
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#functions-and-keywords">
+   Functions and Keywords
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#arithmetic-operators">
+   Arithmetic Operators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="introduction-to-python">
+<h1>Introduction to Python<a class="headerlink" href="#introduction-to-python" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<p><strong>Learning Objectives</strong>:</p>
+<ul class="simple">
+<li><p>Define the terms computer program, programming language, script, and automation</p></li>
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function to output data to the screen</p></li>
+<li><p>Explain the difference between the <code class="docutils literal notranslate"><span class="pre">syntax</span></code> and <code class="docutils literal notranslate"><span class="pre">semantics</span></code> of a programming language</p></li>
+<li><p>Define automation and identify uses for automation</p></li>
+<li><p>List some of the characteristics of the Python language</p></li>
+<li><p>Utilize basic Python arithmetic operators to obtain the results of mathematical expressions</p></li>
+</ul>
+<hr class="docutils" />
+<section id="what-is-python">
+<h2>What is Python?<a class="headerlink" href="#what-is-python" title="Permalink to this headline">#</a></h2>
+<p>Python is a high-level, interpreted programming language that is designed to be easy to read, write, and maintain. It has a simple and expressive syntax that makes it accessible to beginners, while its vast library of modules and tools make it a popular choice for professional developers.</p>
+<p>Python is used in a wide variety of applications, from web development and scientific computing to artificial intelligence and machine learning. Its design philosophy emphasizes code readability, simplicity, and ease of use, which makes it a great choice for projects of any size or complexity.</p>
+</section>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Permalink to this headline">#</a></h2>
+<p>Having accurate syntax is extremely significant when coding. Even the slightest mistake, such as a missing parentheses or an extra comma, can result in a syntax error, which would prevent the code from running entirely. It’s vital to be attentive to the syntax if the code produces an error or an exception.</p>
+<p>However, if the syntax is precise, and the script still displays unexpected behavior or results, the problem could be semantic. It’s important to remember that syntax denotes the rules for constructing code, while semantics relates to the meaning of coded statements. <strong>What is the code intended to accomplish?</strong> Although it’s possible to have syntactically correct code that runs successfully, it may not perform the desired task.</p>
+</section>
+<section id="semantics">
+<h2>Semantics<a class="headerlink" href="#semantics" title="Permalink to this headline">#</a></h2>
+<p>The semantics of a language associates a meaning with each syntactically correct string of symbols that has no static semantic errors.</p>
+<p>In the context of Python, the statement means that for every syntactically correct sequence of code, there is a well-defined meaning associated with it, known as its <code class="docutils literal notranslate"><span class="pre">semantic</span></code>. This meaning determines the code’s behaviour at runtime and is crucial to programming languages like Python.</p>
+<p><strong>For example</strong>, the semantics of a function call in Python determines the input arguments it expects, the output it returns, and the side effects it may have.</p>
+</section>
+<section id="program-1">
+<h2>Program 1<a class="headerlink" href="#program-1" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>The code block below outputs the text <strong>Hello, world!</strong> to the console using the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function. It then assigns the values 3 and 4 to the variables <strong>x</strong> and <strong>y</strong>, respectively, and adds them together to get the sum, which is stored in the variable <strong>z</strong>. The <code class="docutils literal notranslate"><span class="pre">print()</span></code> function is used again to output the sum to the console, along with some additional text.</p>
+<p>The final <code class="docutils literal notranslate"><span class="pre">print()</span></code> statement outputs a message to the console, which reads <strong>And through my first python code, I say hello to the world!</strong>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, world!&quot;</span><span class="p">)</span>
+
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">y</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="n">z</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The sum is:&#39;</span><span class="p">,</span><span class="n">z</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;And through my first python code, I say hello to the world!&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hello, world!
+The sum is: 7
+And through my first python code, I say hello to the world!
+</pre></div>
+</div>
+</div>
+</div>
+<p>When a piece of text is enclosed within quotation marks, it signifies that the text is being defined as a string.</p>
+</section>
+<section id="functions-and-keywords">
+<h2>Functions and Keywords<a class="headerlink" href="#functions-and-keywords" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p><strong>Functions</strong> are blocks of code that can perform a specific task or set of tasks. They are designed to be reusable and modular, and can take input arguments to produce output values.</p>
+<p>In the previous example, the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function was used to display a message on the screen. However, functions can do much more than that. They can manipulate data, perform calculations, and execute complex algorithms. Functions are an essential part of programming, as they help to organize code and make it easier to maintain and reuse.</p>
+<p>Here is a list of all the built-in functions available:</p>
+<p><img alt="functions.png" src="_images/functions.png" /></p>
+<p>In Python, <strong>keywords</strong> are reserved words that have a specific meaning and purpose in the language. They are used to define the structure of a program, to control the flow of execution, to create variables, and to perform other operations.</p>
+<p>Some examples of keywords include <code class="docutils literal notranslate"><span class="pre">if</span></code>, <code class="docutils literal notranslate"><span class="pre">else</span></code>, <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">for</span></code>, <code class="docutils literal notranslate"><span class="pre">def</span></code>, <code class="docutils literal notranslate"><span class="pre">return</span></code>, <code class="docutils literal notranslate"><span class="pre">True</span></code>, <code class="docutils literal notranslate"><span class="pre">False</span></code>, and <code class="docutils literal notranslate"><span class="pre">None</span></code>. These words cannot be used as variable names or function names because they are already used by the language for specific tasks.</p>
+<p>Here is a list of all the keywords:</p>
+<p><img alt="keywords.png" src="_images/keywords.png" /></p>
+</section>
+<section id="arithmetic-operators">
+<h2>Arithmetic Operators<a class="headerlink" href="#arithmetic-operators" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>Python can operate with numbers using the usual mathematical operators, and some special operators, too. These are all of them:</p>
+<ul class="simple">
+<li><p><strong>a + b</strong> = Adds a and b</p></li>
+<li><p><strong>a - b</strong> = Subtracts b from a</p></li>
+<li><p><strong>a * b</strong> = Multiplies a and b</p></li>
+<li><p><strong>a / b</strong> = Divides a by b</p></li>
+<li><p><strong>a ** b</strong> = Elevates a to the power of b. For non integer values of b, this becomes a root (i.e. a**(1/2) is the square root of a)</p></li>
+<li><p><strong>a // b</strong> = The integer part of the integer division of a by b</p></li>
+<li><p><strong>a % b</strong> = The remainder part of the integer division of a by b</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">first_num</span> <span class="o">=</span> <span class="mi">21</span>
+<span class="n">second_num</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first_num</span><span class="p">,</span><span class="s2">&quot;+&quot;</span><span class="p">,</span><span class="n">second_num</span><span class="p">,</span><span class="s2">&quot;=&quot;</span><span class="p">,</span><span class="n">first_num</span><span class="o">+</span><span class="n">second_num</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first_num</span><span class="p">,</span><span class="s2">&quot;-&quot;</span><span class="p">,</span><span class="n">second_num</span><span class="p">,</span><span class="s2">&quot;=&quot;</span><span class="p">,</span><span class="n">first_num</span><span class="o">-</span><span class="n">second_num</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first_num</span><span class="p">,</span><span class="s2">&quot;*&quot;</span><span class="p">,</span><span class="n">second_num</span><span class="p">,</span><span class="s2">&quot;=&quot;</span><span class="p">,</span><span class="n">first_num</span><span class="o">*</span><span class="n">second_num</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first_num</span><span class="p">,</span><span class="s2">&quot;/&quot;</span><span class="p">,</span><span class="n">second_num</span><span class="p">,</span><span class="s2">&quot;=&quot;</span><span class="p">,</span><span class="n">first_num</span><span class="o">/</span><span class="n">second_num</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first_num</span><span class="p">,</span><span class="s2">&quot;**&quot;</span><span class="p">,</span><span class="n">second_num</span><span class="p">,</span><span class="s2">&quot;=&quot;</span><span class="p">,</span><span class="n">first_num</span><span class="o">**</span><span class="n">second_num</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first_num</span><span class="p">,</span><span class="s2">&quot;//&quot;</span><span class="p">,</span><span class="n">second_num</span><span class="p">,</span><span class="s2">&quot;=&quot;</span><span class="p">,</span><span class="n">first_num</span><span class="o">//</span><span class="n">second_num</span><span class="p">,</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">first_num</span><span class="p">,</span><span class="s2">&quot;%&quot;</span><span class="p">,</span><span class="n">second_num</span><span class="p">,</span><span class="s2">&quot;=&quot;</span><span class="p">,</span><span class="n">first_num</span><span class="o">%</span><span class="k">second_num</span>,end=&quot;\n\n&quot;)
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>21 + 3 = 24
+
+21 - 3 = 18
+
+21 * 3 = 63
+
+21 / 3 = 7.0
+
+21 ** 3 = 9261
+
+21 // 3 = 7
+
+21 % 3 = 0
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">end=</span></code> key of print function will set the string that needs to be appended when printing is done. By default the end key is set by newline character <code class="docutils literal notranslate"><span class="pre">\n</span></code>. So after finishing printing all the variables, a newline character is appended.</p>
+<p>For the code above, two newline characters <code class="docutils literal notranslate"><span class="pre">\n\n</span></code> are explicitly added.</p>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p><strong>Exercise 1</strong></p>
+<p>Keeping in mind there are 86400 seconds per day, write a program that calculates how many seconds there are in a week, if a week is 7 days. Print the result on the screen.</p>
+<p>Note: Your result should be in the format of just a number, not a sentence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">secs</span> <span class="o">=</span> <span class="mi">86400</span>
+<span class="n">days</span> <span class="o">=</span> <span class="mi">7</span>
+<span class="n">week_secs</span> <span class="o">=</span> <span class="n">secs</span> <span class="o">*</span> <span class="n">days</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">week_secs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>604800
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Exercise 2</strong></p>
+<p>Use Python to calculate how many different passwords can be formed with 6 lower case English letters.  For a 1 letter password, there would be 26 possibilities.  For a 2 letter password, each letter is independent of the other, so there would be 26 times 26 possibilities.  Using this information, print the amount of possible passwords that can be formed with 6 letters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">26</span><span class="o">**</span><span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>308915776
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+<p><strong>Exercise 3</strong></p>
+<p>Most hard drives are divided into sectors of 512 bytes each.  Our disk has a size of 16 GB. Write a code to calculate how many sectors the disk has.</p>
+<p>Note: Your result should be in the format of just a number, not a sentence.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">disk_size</span> <span class="o">=</span> <span class="mi">16</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span><span class="o">*</span><span class="mi">1024</span>
+<span class="n">sector_size</span> <span class="o">=</span> <span class="mi">512</span>
+<span class="n">sector_amount</span> <span class="o">=</span> <span class="n">disk_size</span><span class="o">/</span><span class="n">sector_size</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sector_amount</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>33554432.0
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Introduction</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="nb2-2.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Variables, Functions and Conditionals</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Rajdeep Chakraborty<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
