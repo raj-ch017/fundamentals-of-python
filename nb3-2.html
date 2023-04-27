@@ -1,0 +1,1353 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Loop - Over and Over &#8212; Fundamentals of Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Strings" href="strings.html" />
+    <link rel="prev" title="Variables, Functions and Conditionals" href="nb2-2.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fundamentals of Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nb1-2.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nb2-2.html">
+   Variables, Functions and Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Loop - Over and Over
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="strings.html">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lists.html">
+   Lists and Tuples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dict.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   Exercise Book: Strings, Lists and Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="oop.html">
+   Object Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercise_notebook.html">
+   Exercise Book: Methods and Classes
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="final_project-2.html">
+   Final Project - Word Cloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/nb3-2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Fnb3-2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/nb3-2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#while-loop">
+   While Loop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-7">
+   Program 7
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-the-loop-handling-and-avoiding-errors">
+   Breaking the Loop: Handling and Avoiding Errors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-8">
+   Program 8
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-9">
+   Program 9
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-10">
+   Program 10
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-11">
+   Program 11
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-loop">
+   For Loop
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#range-function">
+     Range Function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pitfalls-using-for-loops">
+   Pitfalls Using For Loops:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-12">
+   Program 12
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Loop - Over and Over</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#while-loop">
+   While Loop
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-7">
+   Program 7
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#breaking-the-loop-handling-and-avoiding-errors">
+   Breaking the Loop: Handling and Avoiding Errors
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-8">
+   Program 8
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-9">
+   Program 9
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-10">
+   Program 10
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-11">
+   Program 11
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-loop">
+   For Loop
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#range-function">
+     Range Function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#pitfalls-using-for-loops">
+   Pitfalls Using For Loops:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#program-12">
+   Program 12
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#exercises">
+   Exercises
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="loop-over-and-over">
+<h1>Loop - Over and Over<a class="headerlink" href="#loop-over-and-over" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<p><strong>Learning Objectives</strong></p>
+<ul class="simple">
+<li><p>Use the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function to control <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loops</span></code></p></li>
+<li><p>Utilize <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loops</span></code> to iterate over a block of code</p></li>
+<li><p>Identify and fix infinite loops when using <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loops</span></code></p></li>
+<li><p>Implement <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loops</span></code> to continuously execute code while a condition is true</p></li>
+<li><p>Use nested <code class="docutils literal notranslate"><span class="pre">while</span></code> and <code class="docutils literal notranslate"><span class="pre">for</span></code> loops with <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">statements</span></code></p></li>
+<li><p>Identify and correct common errors when using loops</p></li>
+</ul>
+<hr class="docutils" />
+<section id="while-loop">
+<h2>While Loop<a class="headerlink" href="#while-loop" title="Permalink to this headline">#</a></h2>
+<p>A <strong>while loop</strong> executes code repeatedly based on the value of a condition. It starts with the <code class="docutils literal notranslate"><span class="pre">while</span></code> keyword, followed by a comparison that is to be evaluated, and ends with a colon. The code block to be executed is indented to the right on the next line.</p>
+<p>Like an <strong>if statement</strong>, the body of code is executed only if the comparison evaluates to <code class="docutils literal notranslate"><span class="pre">True</span></code>. However, the key feature of a while loop is that the code block keeps executing as long as the evaluation statement remains True. Once the statement is no longer True, the loop terminates, and the next line of code is executed.</p>
+</section>
+<section id="program-7">
+<h2>Program 7<a class="headerlink" href="#program-7" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">squares</span></code> function takes a number <code class="docutils literal notranslate"><span class="pre">n</span></code> as input and returns the square of that number.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">sum_squares</span></code> function takes a number <code class="docutils literal notranslate"><span class="pre">x</span></code> as input. It initializes a variable <code class="docutils literal notranslate"><span class="pre">input</span></code> to be equal to <code class="docutils literal notranslate"><span class="pre">x</span></code> and initializes two more variables <code class="docutils literal notranslate"><span class="pre">sum</span></code> and <code class="docutils literal notranslate"><span class="pre">num</span></code> to 0.</p></li>
+<li><p>The function then enters a while loop that continues until <code class="docutils literal notranslate"><span class="pre">num</span></code> is less than <code class="docutils literal notranslate"><span class="pre">input</span></code>.</p></li>
+<li><p>In each iteration of the loop, the function calls the <code class="docutils literal notranslate"><span class="pre">squares</span></code> function with <code class="docutils literal notranslate"><span class="pre">num</span></code> as input and adds the result to the <code class="docutils literal notranslate"><span class="pre">sum</span></code> variable. It also prints the current value of <code class="docutils literal notranslate"><span class="pre">num</span></code>. Finally, it increments <code class="docutils literal notranslate"><span class="pre">num</span></code> by 1.</p></li>
+<li><p>Once the loop has finished, the function returns the final value of <code class="docutils literal notranslate"><span class="pre">sum</span></code>, which is the sum of squares from 0 to (x-1).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">squares</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        n (int): Input number, the base</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        n**2 (int): Square of the base</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">n</span><span class="o">**</span><span class="mi">2</span>
+
+
+<span class="k">def</span> <span class="nf">sum_squares</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        x (int): The upper limit (exclusive) of the range of numbers</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        int: The sum of squares from 0 to (x-1)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="nb">input</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">while</span> <span class="n">num</span> <span class="o">&lt;</span> <span class="nb">input</span><span class="p">:</span>
+    
+        <span class="n">a</span> <span class="o">=</span> <span class="n">squares</span><span class="p">(</span><span class="n">num</span><span class="p">)</span>
+        <span class="nb">sum</span> <span class="o">+=</span> <span class="n">a</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Loop run number: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">num</span><span class="p">))</span>
+        <span class="n">num</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">return</span> <span class="nb">sum</span>
+
+<span class="n">sum_squares</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loop run number: 0
+Loop run number: 1
+Loop run number: 2
+Loop run number: 3
+Loop run number: 4
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+</pre></div>
+</div>
+</div>
+</div>
+<p>It’s crucial to keep in mind that the while loop’s condition must result in either <code class="docutils literal notranslate"><span class="pre">True</span></code> or <code class="docutils literal notranslate"><span class="pre">False</span></code>. Achieving a certain result in programming can be done through the use of comparison operators or the invocation of other functions.</p>
+<p>Furthermore, the condition for while loops can become more intricate by utilizing logical operators such as <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, and <code class="docutils literal notranslate"><span class="pre">not</span></code>.</p>
+</section>
+<section id="breaking-the-loop-handling-and-avoiding-errors">
+<h2>Breaking the Loop: Handling and Avoiding Errors<a class="headerlink" href="#breaking-the-loop-handling-and-avoiding-errors" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>One should watch out for a common mistake in <code class="docutils literal notranslate"><span class="pre">while</span></code> loops: <strong>forgetting to initialize variables</strong>. If a variable is used without being initialized, a <code class="docutils literal notranslate"><span class="pre">NameError</span></code> will occur. The Python interpreter will catch the mistake and inform the user that an undefined variable is being used. The solution is simple: initialize the variable by assigning it a value before it is used.</p></li>
+<li><p>Another common mistake to watch out for, which can be trickier to spot, is forgetting to initialize variables with the correct value. If a variable is used earlier in the code and then reused later in a loop without first setting it to the desired value, the code may produce unexpected results. <strong>It is important to always initialize variables before using them</strong>.</p></li>
+<li><p><strong>Infinite Loop</strong>: An infinite loop occurs when the code block in the loop continues to execute and never stops. This can occur when the condition being evaluated in a while loop doesn’t change. One should pay close attention to their variables and consider unexpected values.</p></li>
+</ul>
+</section>
+<section id="program-8">
+<h2>Program 8<a class="headerlink" href="#program-8" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>The function <code class="docutils literal notranslate"><span class="pre">print_prime_factors</span></code> takes a single argument called <code class="docutils literal notranslate"><span class="pre">number</span></code>. The function finds all prime factors of the number and prints them in order.</p>
+<p>It starts with the first prime factor which is 2, and continues to check each consecutive factor to see if it is a divisor of number. If it is, then it prints the factor and divides the number by that factor. If it’s not a divisor, it increments the factor by one and checks the next number. This process is repeated until the factor is greater than the number. Finally, the function returns a string “Done”.</p>
+<p><strong>An example</strong> usage of the function is shown at the bottom, where it’s called with argument 100 and prints the prime factors 2, 2, 5, and 5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_prime_factors</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        number (int): A positive integer for which to</span>
+<span class="sd">        find the prime factors</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: A message indicating the function has finished</span>
+<span class="sd">        execution</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">factor</span> <span class="o">=</span> <span class="mi">2</span>
+    
+    <span class="k">while</span> <span class="n">factor</span> <span class="o">&lt;=</span> <span class="n">number</span><span class="p">:</span>
+        
+        <span class="k">if</span> <span class="n">number</span> <span class="o">%</span> <span class="n">factor</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            
+            <span class="nb">print</span><span class="p">(</span><span class="n">factor</span><span class="p">)</span>
+            
+            <span class="n">number</span> <span class="o">=</span> <span class="n">number</span> <span class="o">/</span> <span class="n">factor</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+                        
+            <span class="n">factor</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+    <span class="k">return</span> <span class="s2">&quot;Done&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Should print 2, 2, 5 and 5    </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 1&quot;</span><span class="p">)</span>
+<span class="n">print_prime_factors</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+
+<span class="c1"># Should print 2, 2, 3, 3, 3 and 5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 2&quot;</span><span class="p">)</span>
+<span class="n">print_prime_factors</span><span class="p">(</span><span class="mi">540</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 1
+2
+2
+5
+5
+
+Run 2
+2
+2
+3
+3
+3
+5
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Done&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="program-9">
+<h2>Program 9<a class="headerlink" href="#program-9" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>The function <code class="docutils literal notranslate"><span class="pre">is_power_of_two</span></code> takes a single argument <code class="docutils literal notranslate"><span class="pre">in_num</span></code>. The function checks if <code class="docutils literal notranslate"><span class="pre">in_num</span></code> is a power of two by continuously dividing it by 2 as long as the result is an even number.</p>
+<p>If the final result is 1, then the original number was a power of two, and the function returns <code class="docutils literal notranslate"><span class="pre">True</span></code>. If the final result is not 1, then the original number was not a power of two, and the function returns <code class="docutils literal notranslate"><span class="pre">False</span></code>. If the initial value of <code class="docutils literal notranslate"><span class="pre">in_num</span></code> is 0, the function returns <code class="docutils literal notranslate"><span class="pre">False</span></code> without executing the while loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">is_power_of_two</span><span class="p">(</span><span class="n">in_num</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        in_num (int): The number to be checked</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        bool: True if in_num is a power of two,</span>
+<span class="sd">              False otherwise   </span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Check if the number can be divided by two without a remainder</span>
+    
+    <span class="k">while</span> <span class="p">(</span><span class="n">in_num</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">in_num</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+        <span class="n">in_num</span> <span class="o">=</span> <span class="n">in_num</span> <span class="o">/</span> <span class="mi">2</span>
+        
+    <span class="k">if</span> <span class="n">in_num</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">True</span>
+    
+    <span class="k">return</span> <span class="kc">False</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Should be False</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Should be True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span> 
+
+<span class="c1"># Should be True</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="mi">8</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Should be False</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 4&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">is_power_of_two</span><span class="p">(</span><span class="mi">9</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 1
+False
+
+Run 2
+True
+
+Run 3
+True
+
+Run 4
+False
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="program-10">
+<h2>Program 10<a class="headerlink" href="#program-10" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>The function <code class="docutils literal notranslate"><span class="pre">sum_divisors</span></code> takes a single integer argument <code class="docutils literal notranslate"><span class="pre">input_num</span></code>. The function computes the sum of all divisors of <code class="docutils literal notranslate"><span class="pre">input_num</span></code>, excluding <code class="docutils literal notranslate"><span class="pre">input_num</span></code> itself.</p>
+<p>It starts by initializing a variable <code class="docutils literal notranslate"><span class="pre">sum</span></code> to 0 and a variable <code class="docutils literal notranslate"><span class="pre">div</span></code> to 1. Then, it enters a while loop that continues as long as <code class="docutils literal notranslate"><span class="pre">div</span></code> is less than <code class="docutils literal notranslate"><span class="pre">input_num</span></code>. Inside the loop, the function checks whether <code class="docutils literal notranslate"><span class="pre">input_num</span></code> is divisible by <code class="docutils literal notranslate"><span class="pre">div</span></code>. If it is, then the value of <code class="docutils literal notranslate"><span class="pre">div</span></code> is added to the <code class="docutils literal notranslate"><span class="pre">sum</span></code> variable, and <code class="docutils literal notranslate"><span class="pre">div</span></code> is incremented by 1. Otherwise, <code class="docutils literal notranslate"><span class="pre">div</span></code> is simply incremented by 1. Finally, the function returns the value of <code class="docutils literal notranslate"><span class="pre">sum</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sum_divisors</span><span class="p">(</span><span class="n">input_num</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        input_num (int): A positive integer</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        An integer representing the sum of all</span>
+<span class="sd">        positive divisors of the input number</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">div</span> <span class="o">=</span> <span class="mi">1</span>
+    
+    <span class="k">while</span> <span class="n">div</span> <span class="o">&lt;</span> <span class="n">input_num</span><span class="p">:</span>
+        
+        <span class="k">if</span> <span class="p">(</span><span class="n">input_num</span> <span class="o">%</span> <span class="n">div</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+            
+            <span class="nb">sum</span> <span class="o">+=</span> <span class="n">div</span>
+            <span class="n">div</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+        <span class="k">else</span><span class="p">:</span>
+            
+            <span class="n">div</span> <span class="o">+=</span> <span class="mi">1</span>
+            
+    <span class="k">return</span> <span class="nb">sum</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Should return 0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_divisors</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Should sum of 1 = 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_divisors</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span> 
+
+<span class="c1"># Should sum of 1+2+3+4+6+9+12+18 = 55</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_divisors</span><span class="p">(</span><span class="mi">36</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span> 
+
+<span class="c1"># Should be sum of 2+3+6+17+34+51 = 114</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 4&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_divisors</span><span class="p">(</span><span class="mi">102</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 1
+0
+
+Run 2
+1
+
+Run 3
+55
+
+Run 4
+114
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="program-11">
+<h2>Program 11<a class="headerlink" href="#program-11" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p><code class="docutils literal notranslate"><span class="pre">multiplication_table</span></code> takes a single argument <code class="docutils literal notranslate"><span class="pre">input_number</span></code>. It uses a while loop to print out a multiplication table for number up to 5 times. The loop calculates the result of multiplying number by multiplier and prints it out in a formatted string.</p>
+<p>The loop also checks if the result is greater than 25, and if it is, it breaks out of the loop.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">multiplication_table</span><span class="p">(</span><span class="n">input_number</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        input_number (int): An integer to generate</span>
+<span class="sd">        the multiplication table for.</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        None</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="c1"># Initialize the starting point of the multiplication table</span>
+    
+    <span class="n">multiplier</span> <span class="o">=</span> <span class="mi">1</span>
+    
+    <span class="c1"># Looping up to 5</span>
+    
+    <span class="k">while</span> <span class="n">multiplier</span> <span class="o">&lt;=</span> <span class="mi">5</span><span class="p">:</span>
+        
+        <span class="n">result</span> <span class="o">=</span> <span class="n">input_number</span> <span class="o">*</span> <span class="n">multiplier</span>
+        
+        <span class="c1"># Condition to exit out of the loop</span>
+        
+        <span class="k">if</span> <span class="n">result</span> <span class="o">&gt;=</span> <span class="mi">25</span><span class="p">:</span>
+            <span class="k">break</span>
+            
+        <span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">input_number</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; x &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">multiplier</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; = &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">result</span><span class="p">))</span>
+        
+        <span class="c1"># increment the variable for the loop</span>
+        
+        <span class="n">multiplier</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Should print: 3x1=3 3x2=6 3x3=9 3x4=12 3x5=15</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 1&quot;</span><span class="p">)</span>
+<span class="n">multiplication_table</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="c1"># Should print: 5x1=5 5x2=10 5x3=15 5x4=20 5x5=25</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 2&quot;</span><span class="p">)</span>
+<span class="n">multiplication_table</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span> 
+
+<span class="c1"># Should print: 8x1=8 8x2=16 8x3=24        </span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 3&quot;</span><span class="p">)</span>
+<span class="n">multiplication_table</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 1
+3 x 1 = 3
+3 x 2 = 6
+3 x 3 = 9
+3 x 4 = 12
+3 x 5 = 15
+
+Run 2
+5 x 1 = 5
+5 x 2 = 10
+5 x 3 = 15
+5 x 4 = 20
+
+Run 3
+8 x 1 = 8
+8 x 2 = 16
+8 x 3 = 24
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="for-loop">
+<h2>For Loop<a class="headerlink" href="#for-loop" title="Permalink to this headline">#</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> starts with the keyword <code class="docutils literal notranslate"><span class="pre">for</span></code> followed by a colon, similar to <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">statements</span></code> and <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loops</span></code>. The code block following the for loop is executed for each element in the sequence defined by the <code class="docutils literal notranslate"><span class="pre">range()</span></code> function or any other iterable object.</p>
+<p>The loop variable, such as <code class="docutils literal notranslate"><span class="pre">x</span></code> in the <strong>example below</strong>, is assigned to each element in the sequence in turn. The <code class="docutils literal notranslate"><span class="pre">range()</span></code> function generates a sequence of numbers from 0 to n-1, where <code class="docutils literal notranslate"><span class="pre">n</span></code> is the argument passed to the function.</p>
+<p><code class="docutils literal notranslate"><span class="pre">For</span> <span class="pre">loops</span></code> are useful when you want to perform a repetitive task for each element in a sequence, such as iterating over a list of strings or a file. If there is a need to repeat an action until a specific condition is met, then a <code class="docutils literal notranslate"><span class="pre">while</span> <span class="pre">loop</span></code> is more appropriate.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+</pre></div>
+</div>
+</div>
+</div>
+<section id="range-function">
+<h3>Range Function<a class="headerlink" href="#range-function" title="Permalink to this headline">#</a></h3>
+<p>The <code class="docutils literal notranslate"><span class="pre">range()</span></code> function can take up to three parameters:  <code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code></p>
+<ul class="simple">
+<li><p><strong>Start</strong>:
+The first item in the range() function parameters is the starting position of the range. The default is the first index position, which points to the numeric value 0. This value is included in the range.</p></li>
+<li><p><strong>Stop</strong>:
+The second item in the range() function parameters is the ending position of the range. There is no default index position, so this index number must be given to the range() parameters. For example, the line <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">n</span> <span class="pre">in</span> <span class="pre">range(4)</span></code> will loop 4 times with the n variable starting at 0 and looping 4 index positions: 0, 1, 2, 3. As you can see, range(4) (meaning index position 4) ends at the numeric value 3. In Python, this structure may be phrased as <strong>the end-of-range value is excluded from the range.</strong> In order to include the value 4 in  range(4), the syntax can be written as range(4+1) or range(5). Both of these ranges will produce the numeric values 0, 1, 2, 3, 4.</p></li>
+<li><p><strong>Step</strong>:
+The third item in the range() function parameters is the incremental step value. The default increment is +1. The default value can be overridden with any valid increment. However, note that the loop will still end at the end-of-range index position, regardless of the incremental value. For example, if you have a loop with the range: <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">n</span> <span class="pre">in</span> <span class="pre">range(1,</span> <span class="pre">5,</span> <span class="pre">6)</span></code>, the range will only produce the numeric value 1. This is because the incremental value of 6 exceeded the ending point of the range.</p></li>
+</ul>
+<p>Here are some <strong>examples</strong> of <code class="docutils literal notranslate"><span class="pre">range()</span></code> in code:</p>
+<p><strong>Example 1</strong></p>
+<p>In this code, a range from 0 to 10 is used to iterate through the values of the variable <code class="docutils literal notranslate"><span class="pre">n</span></code>. The loop increments by 2 on each iteration, and the <code class="docutils literal notranslate"><span class="pre">print()</span></code> function is used to display the current value of <code class="docutils literal notranslate"><span class="pre">n</span></code> as it counts from 0 to 10 (excluding the end-of-range index 11). This is a way to generate and print a list of even numbers in Python.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+2
+4
+6
+8
+10
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Example 2</strong></p>
+<p>This loop iterates on the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> variable in a range of 2 to 7+1 (the value of the end-of-range index 7 is excluded, so +1 has been added to the parameter to include the numeric value 7 in the range). The incremental value for the loop is the default of +1.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">print()</span></code> function will output the resulting value of <code class="docutils literal notranslate"><span class="pre">number</span></code> multiplied by 3.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">number</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">7</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span> <span class="o">*</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
+9
+12
+15
+18
+21
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Example 3</strong></p>
+<p>This code uses a <code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">loop</span></code> to iterate through a range of numbers, with the variable <code class="docutils literal notranslate"><span class="pre">x</span></code> taking on each value in turn. The range starts at 2 and goes down to -1 (excluding the end-of-range index -2) in decrements of -1. The <code class="docutils literal notranslate"><span class="pre">print()</span></code> function displays the current value of <code class="docutils literal notranslate"><span class="pre">x</span></code> during each iteration of the loop, as it counts down from 2 to -1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+1
+0
+-1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="pitfalls-using-for-loops">
+<h2>Pitfalls Using For Loops:<a class="headerlink" href="#pitfalls-using-for-loops" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>The upper limit of <code class="docutils literal notranslate"><span class="pre">range()</span></code> is not included in the sequence produced.</p></li>
+<li><p>Iterating over non-sequences.</p></li>
+</ul>
+</section>
+<section id="program-12">
+<h2>Program 12<a class="headerlink" href="#program-12" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p>Complete the <code class="docutils literal notranslate"><span class="pre">factorial</span></code> function so that it returns the factorial of the input integer <code class="docutils literal notranslate"><span class="pre">num</span></code>. Once the function is complete, print the first 10 factorials (from 0 to 9) along with their corresponding numbers.</p>
+<p>It’s <strong>important</strong> to remember that the factorial of a number is calculated as the product of that number and all positive integers before it.</p>
+<p><strong>For instance</strong>, the factorial of 5 (5!) is equal to 1* 2 * 3 * 4 * 5 = 120, and the factorial of 0 (0!) is 1.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Calculates the factorial of a given integer.</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        n (int): The integer to calculate the factorial of.</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        result (int): The factorial of the given integer.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">result</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">in1</span><span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span>
+    
+    <span class="k">if</span> <span class="n">n</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">result</span>
+    
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="n">in1</span><span class="p">):</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">result</span> <span class="o">*</span> <span class="n">x</span>
+    
+    <span class="k">return</span> <span class="n">result</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    
+    <span class="n">output</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Factorial of&quot;</span><span class="p">,</span><span class="n">j</span><span class="p">,</span><span class="s2">&quot; = &quot;</span><span class="p">,</span><span class="n">output</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Factorial of 0  =  1
+Factorial of 1  =  1
+Factorial of 2  =  2
+Factorial of 3  =  6
+Factorial of 4  =  24
+Factorial of 5  =  120
+Factorial of 6  =  720
+Factorial of 7  =  5040
+Factorial of 8  =  40320
+Factorial of 9  =  362880
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises">
+<h2>Exercises<a class="headerlink" href="#exercises" title="Permalink to this headline">#</a></h2>
+<hr class="docutils" />
+<p><strong>Exercise 1</strong></p>
+<p>Implement a function called <code class="docutils literal notranslate"><span class="pre">digits(n)</span></code> that determines the number of digits in a given integer <code class="docutils literal notranslate"><span class="pre">n</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">digits</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Computes the number of digits in a non-negative integer.</span>
+<span class="sd">    </span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        n (int): The integer to count the digits of.</span>
+<span class="sd">    </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        int: The number of digits in n.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+    
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">9</span><span class="p">:</span>
+        <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+    
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">9</span><span class="p">:</span>
+    
+        <span class="k">while</span> <span class="p">(</span><span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">):</span>
+         <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">//</span> <span class="mi">10</span>
+         <span class="n">count</span> <span class="o">=</span> <span class="n">count</span> <span class="o">+</span> <span class="mi">1</span>
+    
+    <span class="k">return</span> <span class="n">count</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Should return 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">digits</span><span class="p">(</span><span class="mi">25</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Should return 3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">digits</span><span class="p">(</span><span class="mi">144</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 1
+2
+
+Run 2
+3
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 2</strong></p>
+<p>Create a function called <code class="docutils literal notranslate"><span class="pre">counter</span></code> that takes in two parameters, <code class="docutils literal notranslate"><span class="pre">start</span></code> and <code class="docutils literal notranslate"><span class="pre">stop</span></code>. The function should count down from <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">stop</span></code> if <code class="docutils literal notranslate"><span class="pre">start</span></code> is greater than <code class="docutils literal notranslate"><span class="pre">stop</span></code>, and count up from <code class="docutils literal notranslate"><span class="pre">start</span></code> to <code class="docutils literal notranslate"><span class="pre">stop</span></code> otherwise.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">counter</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">stop</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        start (int): The starting number for the sequence</span>
+<span class="sd">        stop (int): The ending number for the sequence</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        A string that describes a sequence of numbers based</span>
+<span class="sd">        on the input arguments.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">start</span> <span class="o">&gt;</span> <span class="n">stop</span><span class="p">:</span>
+        <span class="n">return_string</span> <span class="o">=</span> <span class="s2">&quot;Counting down: &quot;</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">stop</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">):</span>
+            
+            <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="n">stop</span><span class="p">:</span>
+                <span class="n">return_string</span> <span class="o">=</span> <span class="n">return_string</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">return_string</span> <span class="o">=</span> <span class="n">return_string</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+            
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">elif</span> <span class="n">stop</span> <span class="o">&gt;</span> <span class="n">start</span><span class="p">:</span>
+        
+        <span class="n">return_string</span> <span class="o">=</span> <span class="s2">&quot;Counting up: &quot;</span>
+        
+        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">start</span><span class="p">,</span><span class="n">stop</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+            
+            <span class="k">if</span> <span class="n">j</span> <span class="o">==</span> <span class="n">stop</span><span class="p">:</span>
+                <span class="n">return_string</span> <span class="o">=</span> <span class="n">return_string</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span>
+            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">return_string</span> <span class="o">=</span> <span class="n">return_string</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">j</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;,&quot;</span>
+            
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">return_string</span> <span class="o">=</span> <span class="s2">&quot;Counting up: &quot;</span>
+        <span class="n">return_string</span> <span class="o">=</span> <span class="n">return_string</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">start</span><span class="p">)</span>
+    
+    <span class="k">return</span> <span class="n">return_string</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Should be &quot;Counting up: 1,2,3,4,5,6,7,8,9,10&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Should be &quot;Counting down: 2,1&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span> 
+
+<span class="c1"># Should be &quot;Counting up: 5&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 1
+Counting up: 1,2,3,4,5,6,7,8,9,10
+
+Run 2
+Counting down: 2,1
+
+Run 3
+Counting up: 5
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Exercise 3</strong></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">even_numbers</span></code> function returns a space-separated string of all positive numbers that are divisible by 2, up to and including the maximum that’s passed into the function.</p>
+<p><strong>For example</strong>, even_numbers(6) returns “2 4 6”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">even_numbers</span><span class="p">(</span><span class="n">maximum</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Parameters:</span>
+<span class="sd">        maximum (int): The maximum number to consider</span>
+<span class="sd">        </span>
+<span class="sd">    Returns:</span>
+<span class="sd">        str: A space-separated string of even numbers</span>
+<span class="sd">        from 2 to &#39;maximum&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    
+    <span class="n">return_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="n">maximum</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+
+        <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">return_string</span> <span class="o">+=</span> <span class="nb">str</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; &quot;</span>
+
+    <span class="k">return</span> <span class="n">return_string</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+ 
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Should be 2 4 6</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even_numbers</span><span class="p">(</span><span class="mi">6</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Should be 2 4 6 8 10</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even_numbers</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># No numbers displayed</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even_numbers</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Should be 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 4&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even_numbers</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># No numbers displayed</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 5&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">even_numbers</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span><span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\n\n</span><span class="s2">&quot;</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 1
+2 4 6
+
+Run 2
+2 4 6 8 10
+
+Run 3
+
+
+Run 4
+2
+
+Run 5
+</pre></div>
+</div>
+</div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="nb2-2.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Variables, Functions and Conditionals</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="strings.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Strings</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Rajdeep Chakraborty<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

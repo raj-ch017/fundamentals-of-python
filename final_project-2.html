@@ -1,0 +1,921 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Final Project - Word Cloud &#8212; Fundamentals of Python</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Bibliography" href="bibliography.html" />
+    <link rel="prev" title="Exercise Book: Methods and Classes" href="exercise_notebook.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Fundamentals of Python</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="nb1-2.html">
+   Introduction to Python
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nb2-2.html">
+   Variables, Functions and Conditionals
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="nb3-2.html">
+   Loop - Over and Over
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="strings.html">
+   Strings
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="lists.html">
+   Lists and Tuples
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="dict.html">
+   Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercises.html">
+   Exercise Book: Strings, Lists and Dictionaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="oop.html">
+   Object Oriented Programming
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="exercise_notebook.html">
+   Exercise Book: Methods and Classes
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Final Project - Word Cloud
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="bibliography.html">
+   Bibliography
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/docs/final_project-2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/executablebooks/jupyter-book/issues/new?title=Issue%20on%20page%20%2Ffinal_project-2.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="_sources/final_project-2.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#provided-materials">
+   2. Provided Materials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-the-function">
+   3. Writing the function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-the-word-cloud">
+   4. Generating the Word Cloud
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Final Project - Word Cloud</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#introduction">
+   1. Introduction
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#provided-materials">
+   2. Provided Materials
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#writing-the-function">
+   3. Writing the function
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#generating-the-word-cloud">
+   4. Generating the Word Cloud
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="final-project-word-cloud">
+<h1>Final Project - Word Cloud<a class="headerlink" href="#final-project-word-cloud" title="Permalink to this headline">#</a></h1>
+<hr class="docutils" />
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">#</a></h2>
+<p>In this project, we will create a <strong>word cloud</strong> from a given text by processing the text, removing punctuation, ignoring cases, counting the frequencies, and ignoring uninteresting or irrelevant words. The project will generate a dictionary containing the word frequencies, which the word cloud module will use to generate an image.</p>
+<p>Real-world data processing and visualization applications, such as analyzing customer reviews, news articles, or social media posts, inspired the project task. Completing this project provides valuable experience in processing textual data and generating visual representations of the processed data.</p>
+<p>Beginners can use the project and provide the input text by copying and pasting from a website or using a file containing the text. The project includes both pre-written code and code that had to be completed by the learner, allowing them to understand and modify the code to suit their needs.</p>
+<p>Overall, this project provides a hands-on experience of working with textual data and generating visualizations, which can be valuable in various fields, including data analysis, natural language processing, and data journalism.</p>
+</section>
+<section id="provided-materials">
+<h2>2. Provided Materials<a class="headerlink" href="#provided-materials" title="Permalink to this headline">#</a></h2>
+<p>To begin, you will need to install and import the necessary packages and libraries for the word cloud script and the uploader widget. Running code cells will perform all the necessary installations and imports, but it may take some time to complete. Once you see the final line of output, the code execution is complete, and you can proceed with the instructions for the project.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Here are all the installations and imports needed to generate the word cloud</span>
+
+<span class="o">%</span><span class="k">pip</span> install wordcloud
+<span class="o">%</span><span class="k">pip</span> install fileupload
+<span class="o">%</span><span class="k">pip</span> install ipywidgets
+<span class="o">!</span>jupyter nbextension install --py --user fileupload
+<span class="o">!</span>jupyter nbextension <span class="nb">enable</span> --py fileupload
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wordcloud in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (1.8.2.2)
+Requirement already satisfied: numpy&gt;=1.6.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from wordcloud) (1.21.5)
+Requirement already satisfied: matplotlib in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from wordcloud) (3.5.1)
+Requirement already satisfied: pillow in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from wordcloud) (9.0.1)
+Requirement already satisfied: packaging&gt;=20.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from matplotlib-&gt;wordcloud) (21.3)
+Requirement already satisfied: python-dateutil&gt;=2.7 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from matplotlib-&gt;wordcloud) (2.8.2)
+Requirement already satisfied: pyparsing&gt;=2.2.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from matplotlib-&gt;wordcloud) (3.0.4)
+Requirement already satisfied: cycler&gt;=0.10 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from matplotlib-&gt;wordcloud) (0.11.0)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from matplotlib-&gt;wordcloud) (4.25.0)
+Requirement already satisfied: kiwisolver&gt;=1.0.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from matplotlib-&gt;wordcloud) (1.4.2)
+Requirement already satisfied: six&gt;=1.5 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from python-dateutil&gt;=2.7-&gt;matplotlib-&gt;wordcloud) (1.16.0)
+Note: you may need to restart the kernel to use updated packages.
+Requirement already satisfied: fileupload in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (0.1.5)
+Requirement already satisfied: traitlets&gt;=4.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from fileupload) (5.1.1)
+Requirement already satisfied: ipywidgets&gt;=5.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from fileupload) (7.6.5)
+Requirement already satisfied: notebook&gt;=4.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from fileupload) (6.4.11)
+Requirement already satisfied: ipython&gt;=4.0.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets&gt;=5.1-&gt;fileupload) (8.3.0)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets&gt;=5.1-&gt;fileupload) (6.9.1)
+Requirement already satisfied: ipython-genutils~=0.2.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets&gt;=5.1-&gt;fileupload) (0.2.0)
+Requirement already satisfied: nbformat&gt;=4.2.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets&gt;=5.1-&gt;fileupload) (5.3.0)
+Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets&gt;=5.1-&gt;fileupload) (1.0.0)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets&gt;=5.1-&gt;fileupload) (3.5.2)
+Requirement already satisfied: jupyter-client&lt;8.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (7.2.2)
+Requirement already satisfied: nest-asyncio in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (1.5.5)
+Requirement already satisfied: debugpy&lt;2.0,&gt;=1.0.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (1.5.1)
+Requirement already satisfied: appnope in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.1.2)
+Requirement already satisfied: tornado&lt;7.0,&gt;=4.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (6.1)
+Requirement already satisfied: matplotlib-inline&lt;0.2.0,&gt;=0.1.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.1.2)
+Requirement already satisfied: stack-data in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.2.0)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (3.0.20)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.18.1)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (4.8.0)
+Requirement already satisfied: pickleshare in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.7.5)
+Requirement already satisfied: backcall in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.2.0)
+Requirement already satisfied: decorator in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (5.1.1)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (2.11.2)
+Requirement already satisfied: setuptools&gt;=18.5 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (61.2.0)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.8.3)
+Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (4.10.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (2.8.2)
+Requirement already satisfied: entrypoints in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.4)
+Requirement already satisfied: pyzmq&gt;=22.3 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (22.3.0)
+Requirement already satisfied: fastjsonschema in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (2.15.1)
+Requirement already satisfied: jsonschema&gt;=2.6 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (3.2.0)
+Requirement already satisfied: six&gt;=1.11.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (1.16.0)
+Requirement already satisfied: attrs&gt;=17.4.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (21.4.0)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.18.0)
+Requirement already satisfied: terminado&gt;=0.8.3 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.2-&gt;fileupload) (0.13.1)
+Requirement already satisfied: prometheus-client in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.2-&gt;fileupload) (0.13.1)
+Requirement already satisfied: Send2Trash&gt;=1.8.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.2-&gt;fileupload) (1.8.0)
+Requirement already satisfied: jinja2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.2-&gt;fileupload) (2.11.3)
+Requirement already satisfied: nbconvert&gt;=5 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.2-&gt;fileupload) (6.4.4)
+Requirement already satisfied: argon2-cffi in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.2-&gt;fileupload) (21.3.0)
+Requirement already satisfied: beautifulsoup4 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (4.11.1)
+Requirement already satisfied: bleach in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (4.1.0)
+Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (0.5.13)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (1.5.0)
+Requirement already satisfied: defusedxml in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (0.7.1)
+Requirement already satisfied: testpath in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (0.5.0)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (0.8.4)
+Requirement already satisfied: jupyterlab-pygments in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (0.1.2)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jinja2-&gt;notebook&gt;=4.2-&gt;fileupload) (2.0.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.2.5)
+Requirement already satisfied: argon2-cffi-bindings in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from argon2-cffi-&gt;notebook&gt;=4.2-&gt;fileupload) (21.2.0)
+Requirement already satisfied: cffi&gt;=1.0.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.2-&gt;fileupload) (1.15.0)
+Requirement already satisfied: pycparser in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.2-&gt;fileupload) (2.21)
+Requirement already satisfied: soupsieve&gt;1.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (2.3.1)
+Requirement already satisfied: packaging in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (21.3)
+Requirement already satisfied: webencodings in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (0.5.1)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from packaging-&gt;bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.2-&gt;fileupload) (3.0.4)
+Requirement already satisfied: pure-eval in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.2.2)
+Requirement already satisfied: executing in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (0.8.3)
+Requirement already satisfied: asttokens in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets&gt;=5.1-&gt;fileupload) (2.0.5)
+Note: you may need to restart the kernel to use updated packages.
+Requirement already satisfied: ipywidgets in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (7.6.5)
+Requirement already satisfied: traitlets&gt;=4.3.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets) (5.1.1)
+Requirement already satisfied: ipython-genutils~=0.2.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets) (0.2.0)
+Requirement already satisfied: ipython&gt;=4.0.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets) (8.3.0)
+Requirement already satisfied: jupyterlab-widgets&gt;=1.0.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets) (1.0.0)
+Requirement already satisfied: nbformat&gt;=4.2.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets) (5.3.0)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets) (3.5.2)
+Requirement already satisfied: ipykernel&gt;=4.5.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipywidgets) (6.9.1)
+Requirement already satisfied: matplotlib-inline&lt;0.2.0,&gt;=0.1.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets) (0.1.2)
+Requirement already satisfied: tornado&lt;7.0,&gt;=4.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets) (6.1)
+Requirement already satisfied: nest-asyncio in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets) (1.5.5)
+Requirement already satisfied: debugpy&lt;2.0,&gt;=1.0.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets) (1.5.1)
+Requirement already satisfied: jupyter-client&lt;8.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets) (7.2.2)
+Requirement already satisfied: appnope in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipykernel&gt;=4.5.1-&gt;ipywidgets) (0.1.2)
+Requirement already satisfied: pickleshare in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets) (0.7.5)
+Requirement already satisfied: pygments&gt;=2.4.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets) (2.11.2)
+Requirement already satisfied: pexpect&gt;4.3 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets) (4.8.0)
+Requirement already satisfied: setuptools&gt;=18.5 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets) (61.2.0)
+Requirement already satisfied: decorator in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets) (5.1.1)
+Requirement already satisfied: backcall in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets) (0.2.0)
+Requirement already satisfied: jedi&gt;=0.16 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets) (0.18.1)
+Requirement already satisfied: stack-data in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets) (0.2.0)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from ipython&gt;=4.0.0-&gt;ipywidgets) (3.0.20)
+Requirement already satisfied: parso&lt;0.9.0,&gt;=0.8.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jedi&gt;=0.16-&gt;ipython&gt;=4.0.0-&gt;ipywidgets) (0.8.3)
+Requirement already satisfied: pyzmq&gt;=22.3 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets) (22.3.0)
+Requirement already satisfied: jupyter-core&gt;=4.9.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets) (4.10.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets) (2.8.2)
+Requirement already satisfied: entrypoints in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jupyter-client&lt;8.0-&gt;ipykernel&gt;=4.5.1-&gt;ipywidgets) (0.4)
+Requirement already satisfied: fastjsonschema in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets) (2.15.1)
+Requirement already satisfied: jsonschema&gt;=2.6 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbformat&gt;=4.2.0-&gt;ipywidgets) (3.2.0)
+Requirement already satisfied: attrs&gt;=17.4.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets) (21.4.0)
+Requirement already satisfied: pyrsistent&gt;=0.14.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets) (0.18.0)
+Requirement already satisfied: six&gt;=1.11.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jsonschema&gt;=2.6-&gt;nbformat&gt;=4.2.0-&gt;ipywidgets) (1.16.0)
+Requirement already satisfied: ptyprocess&gt;=0.5 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from pexpect&gt;4.3-&gt;ipython&gt;=4.0.0-&gt;ipywidgets) (0.7.0)
+Requirement already satisfied: wcwidth in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,&lt;3.1.0,&gt;=2.0.0-&gt;ipython&gt;=4.0.0-&gt;ipywidgets) (0.2.5)
+Requirement already satisfied: notebook&gt;=4.4.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from widgetsnbextension~=3.5.0-&gt;ipywidgets) (6.4.11)
+Requirement already satisfied: argon2-cffi in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (21.3.0)
+Requirement already satisfied: nbconvert&gt;=5 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (6.4.4)
+Requirement already satisfied: prometheus-client in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (0.13.1)
+Requirement already satisfied: terminado&gt;=0.8.3 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (0.13.1)
+Requirement already satisfied: jinja2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (2.11.3)
+Requirement already satisfied: Send2Trash&gt;=1.8.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (1.8.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: testpath in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (0.5.0)
+Requirement already satisfied: pandocfilters&gt;=1.4.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (1.5.0)
+Requirement already satisfied: bleach in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (4.1.0)
+Requirement already satisfied: defusedxml in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (0.7.1)
+Requirement already satisfied: beautifulsoup4 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (4.11.1)
+Requirement already satisfied: mistune&lt;2,&gt;=0.8.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (0.8.4)
+Requirement already satisfied: jupyterlab-pygments in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (0.1.2)
+Requirement already satisfied: nbclient&lt;0.6.0,&gt;=0.5.0 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (0.5.13)
+Requirement already satisfied: MarkupSafe&gt;=0.23 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from jinja2-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (2.0.1)
+Requirement already satisfied: argon2-cffi-bindings in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (21.2.0)
+Requirement already satisfied: cffi&gt;=1.0.1 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (1.15.0)
+Requirement already satisfied: pycparser in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from cffi&gt;=1.0.1-&gt;argon2-cffi-bindings-&gt;argon2-cffi-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (2.21)
+Requirement already satisfied: soupsieve&gt;1.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (2.3.1)
+Requirement already satisfied: webencodings in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (0.5.1)
+Requirement already satisfied: packaging in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (21.3)
+Requirement already satisfied: pyparsing!=3.0.5,&gt;=2.0.2 in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from packaging-&gt;bleach-&gt;nbconvert&gt;=5-&gt;notebook&gt;=4.4.1-&gt;widgetsnbextension~=3.5.0-&gt;ipywidgets) (3.0.4)
+Requirement already satisfied: executing in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets) (0.8.3)
+Requirement already satisfied: pure-eval in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets) (0.2.2)
+Requirement already satisfied: asttokens in /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages (from stack-data-&gt;ipython&gt;=4.0.0-&gt;ipywidgets) (2.0.5)
+Note: you may need to restart the kernel to use updated packages.
+Installing /Users/rajdeep_ch/opt/anaconda3/lib/python3.9/site-packages/fileupload/static -&gt; fileupload
+Up to date: /Users/rajdeep_ch/Library/Jupyter/nbextensions/fileupload/widget.js
+Up to date: /Users/rajdeep_ch/Library/Jupyter/nbextensions/fileupload/extension.js
+Up to date: /Users/rajdeep_ch/Library/Jupyter/nbextensions/fileupload/fileupload/widget.js
+- Validating: <span class=" -Color -Color-Green">OK</span>
+
+    To initialize this nbextension in the browser every time the notebook (or other app) loads:
+    
+          jupyter nbextension enable fileupload --user --py
+    
+Enabling notebook extension fileupload/extension...
+      - Validating: <span class=" -Color -Color-Green">OK</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wordcloud</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> 
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span> 
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span> 
+<span class="kn">import</span> <span class="nn">fileupload</span>
+<span class="kn">import</span> <span class="nn">io</span> 
+<span class="kn">import</span> <span class="nn">sys</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To upload the text file, run the following cell that contains all the code for a custom uploader widget.</p>
+<p>Once the cell is run, a <code class="docutils literal notranslate"><span class="pre">Browse</span></code> buttion should appear below it. Clicking this button will open a nagivation window that allows locating the saved text file.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">_upload</span><span class="p">():</span>
+
+    <span class="n">_upload_widget</span> <span class="o">=</span> <span class="n">fileupload</span><span class="o">.</span><span class="n">FileUploadWidget</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">_cb</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+        <span class="k">global</span> <span class="n">file_contents</span>
+        <span class="n">decoded</span> <span class="o">=</span> <span class="n">io</span><span class="o">.</span><span class="n">StringIO</span><span class="p">(</span><span class="n">change</span><span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
+        <span class="n">filename</span> <span class="o">=</span> <span class="n">change</span><span class="p">[</span><span class="s1">&#39;owner&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">filename</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Uploaded `</span><span class="si">{}</span><span class="s1">` (</span><span class="si">{:.2f}</span><span class="s1"> kB)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+            <span class="n">filename</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">decoded</span><span class="o">.</span><span class="n">read</span><span class="p">())</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">**</span><span class="mi">10</span><span class="p">))</span>
+        <span class="n">file_contents</span> <span class="o">=</span> <span class="n">decoded</span><span class="o">.</span><span class="n">getvalue</span><span class="p">()</span>
+
+    <span class="n">_upload_widget</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">_cb</span><span class="p">,</span> <span class="n">names</span><span class="o">=</span><span class="s1">&#39;data&#39;</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">_upload_widget</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="writing-the-function">
+<h2>3. Writing the function<a class="headerlink" href="#writing-the-function" title="Permalink to this headline">#</a></h2>
+<p>The function takes a <code class="docutils literal notranslate"><span class="pre">sentence</span></code> as input, cleans it by removing punctuations and uninteresting words, and then counts the frequency of each word. The frequency count is stored in a dictionary, which is then used to generate a word cloud image. The output is a Numpy array representing the image.</p>
+<p>The function iterates through the words in the text, removes punctuation, ignores word cases (lower-case and upper-case are treated similarly) and words that do not contain all alphabets, and counts the frequency of each remaining word.</p>
+<p>Additionally, the function ignores boring words such as “and” or “the”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">generate_from_frequencies</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; </span>
+<span class="sd">    Process the input sentence to generate a word cloud</span>
+
+<span class="sd">    Parameters:</span>
+<span class="sd">        sentence (str): A string containing the input sentence</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        cloud (numpy.ndarry): A Numpy array representing the word cloud image</span>
+<span class="sd">        generate from the input sentence</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">final_text</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">the_dictionary</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">argument1</span> <span class="o">=</span> <span class="n">sentence</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+    
+    <span class="n">punctuations</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;!()-[]</span><span class="si">{}</span><span class="s1">;:&#39;&quot;\,&lt;&gt;./?@#$%^&amp;*_~--&#39;&#39;&#39;</span>
+    <span class="n">uninteresting_words</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;the&quot;</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s2">&quot;to&quot;</span><span class="p">,</span> <span class="s2">&quot;if&quot;</span><span class="p">,</span> <span class="s2">&quot;is&quot;</span><span class="p">,</span> <span class="s2">&quot;it&quot;</span><span class="p">,</span> <span class="s2">&quot;of&quot;</span><span class="p">,</span><span class="s2">&quot;us&quot;</span><span class="p">,</span><span class="s2">&quot;so&quot;</span><span class="p">,</span><span class="s2">&quot;and&quot;</span><span class="p">,</span> <span class="s2">&quot;or&quot;</span><span class="p">,</span> <span class="s2">&quot;an&quot;</span><span class="p">,</span> <span class="s2">&quot;as&quot;</span><span class="p">,</span> <span class="s2">&quot;i&quot;</span><span class="p">,</span> <span class="s2">&quot;me&quot;</span><span class="p">,</span> <span class="s2">&quot;my&quot;</span><span class="p">,</span> <span class="s2">&quot;up&quot;</span><span class="p">,</span> <span class="s2">&quot;oh&quot;</span> \
+    <span class="s2">&quot;we&quot;</span><span class="p">,</span> <span class="s2">&quot;our&quot;</span><span class="p">,</span> <span class="s2">&quot;ours&quot;</span><span class="p">,</span> <span class="s2">&quot;you&quot;</span><span class="p">,</span> <span class="s2">&quot;your&quot;</span><span class="p">,</span> <span class="s2">&quot;yours&quot;</span><span class="p">,</span> <span class="s2">&quot;he&quot;</span><span class="p">,</span> <span class="s2">&quot;she&quot;</span><span class="p">,</span> <span class="s2">&quot;him&quot;</span><span class="p">,</span> <span class="s2">&quot;his&quot;</span><span class="p">,</span> <span class="s2">&quot;her&quot;</span><span class="p">,</span> <span class="s2">&quot;hers&quot;</span><span class="p">,</span> <span class="s2">&quot;its&quot;</span><span class="p">,</span> <span class="s2">&quot;they&quot;</span><span class="p">,</span> <span class="s2">&quot;them&quot;</span><span class="p">,</span> \
+    <span class="s2">&quot;their&quot;</span><span class="p">,</span> <span class="s2">&quot;what&quot;</span><span class="p">,</span> <span class="s2">&quot;which&quot;</span><span class="p">,</span> <span class="s2">&quot;who&quot;</span><span class="p">,</span> <span class="s2">&quot;whom&quot;</span><span class="p">,</span> <span class="s2">&quot;this&quot;</span><span class="p">,</span> <span class="s2">&quot;that&quot;</span><span class="p">,</span> <span class="s2">&quot;am&quot;</span><span class="p">,</span> <span class="s2">&quot;are&quot;</span><span class="p">,</span> <span class="s2">&quot;was&quot;</span><span class="p">,</span><span class="s2">&quot;we&quot;</span><span class="p">,</span><span class="s2">&quot;were&quot;</span><span class="p">,</span> <span class="s2">&quot;be&quot;</span><span class="p">,</span> <span class="s2">&quot;been&quot;</span><span class="p">,</span><span class="s2">&quot;for&quot;</span><span class="p">,</span> <span class="s2">&quot;being&quot;</span><span class="p">,</span> \
+    <span class="s2">&quot;have&quot;</span><span class="p">,</span> <span class="s2">&quot;has&quot;</span><span class="p">,</span> <span class="s2">&quot;had&quot;</span><span class="p">,</span> <span class="s2">&quot;do&quot;</span><span class="p">,</span> <span class="s2">&quot;does&quot;</span><span class="p">,</span> <span class="s2">&quot;did&quot;</span><span class="p">,</span> <span class="s2">&quot;but&quot;</span><span class="p">,</span> <span class="s2">&quot;at&quot;</span><span class="p">,</span> <span class="s2">&quot;by&quot;</span><span class="p">,</span> <span class="s2">&quot;with&quot;</span><span class="p">,</span> <span class="s2">&quot;from&quot;</span><span class="p">,</span> <span class="s2">&quot;here&quot;</span><span class="p">,</span> <span class="s2">&quot;when&quot;</span><span class="p">,</span> <span class="s2">&quot;where&quot;</span><span class="p">,</span> <span class="s2">&quot;how&quot;</span><span class="p">,</span> \
+    <span class="s2">&quot;all&quot;</span><span class="p">,</span> <span class="s2">&quot;any&quot;</span><span class="p">,</span> <span class="s2">&quot;both&quot;</span><span class="p">,</span> <span class="s2">&quot;each&quot;</span><span class="p">,</span> <span class="s2">&quot;few&quot;</span><span class="p">,</span> <span class="s2">&quot;more&quot;</span><span class="p">,</span> <span class="s2">&quot;some&quot;</span><span class="p">,</span> <span class="s2">&quot;such&quot;</span><span class="p">,</span> <span class="s2">&quot;no&quot;</span><span class="p">,</span> <span class="s2">&quot;nor&quot;</span><span class="p">,</span> <span class="s2">&quot;too&quot;</span><span class="p">,</span> <span class="s2">&quot;very&quot;</span><span class="p">,</span> <span class="s2">&quot;can&quot;</span><span class="p">,</span> <span class="s2">&quot;will&quot;</span><span class="p">,</span> <span class="s2">&quot;just&quot;</span><span class="p">,</span><span class="s2">&quot;in&quot;</span><span class="p">,</span><span class="s2">&quot;on&quot;</span><span class="p">,</span><span class="s2">&quot;you&quot;</span><span class="p">]</span>
+    
+    <span class="c1"># Running through the text and processing it</span>
+    <span class="c1"># to remove punctuations and uninteresting words</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">argument1</span><span class="p">:</span>
+
+        <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="n">word_in_lower</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        
+        <span class="k">for</span> <span class="n">letter</span> <span class="ow">in</span> <span class="n">word_in_lower</span><span class="p">:</span>
+
+            <span class="k">if</span> <span class="n">letter</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">punctuations</span> <span class="ow">and</span> <span class="n">letter</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">text</span> <span class="o">+</span> <span class="n">letter</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">text</span> <span class="o">=</span> <span class="n">text</span> <span class="o">+</span> <span class="s2">&quot;&quot;</span>
+        
+        <span class="n">final_text</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+
+    <span class="c1"># The processed text has been stored in</span>
+    <span class="c1"># final_text (list)</span>
+
+
+    <span class="c1"># Running through the final_text list and</span>
+    <span class="c1"># updating the dictionary with word frequency</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">final_text</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">uninteresting_words</span><span class="p">:</span>
+            
+            <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">the_dictionary</span><span class="p">:</span>
+                <span class="n">count</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">the_dictionary</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">count</span>
+            
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">freq</span> <span class="o">=</span> <span class="n">the_dictionary</span><span class="p">[</span><span class="n">word</span><span class="p">]</span>
+                <span class="n">the_dictionary</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">=</span> <span class="n">freq</span> <span class="o">+</span> <span class="mi">1</span>
+
+    <span class="c1"># Producing Numpy Array</span>
+    <span class="n">cloud</span> <span class="o">=</span> <span class="n">wordcloud</span><span class="o">.</span><span class="n">WordCloud</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">height</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span><span class="n">collocations</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">cloud</span><span class="o">.</span><span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">the_dictionary</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">cloud</span><span class="o">.</span><span class="n">to_array</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generating-the-word-cloud">
+<h2>4. Generating the Word Cloud<a class="headerlink" href="#generating-the-word-cloud" title="Permalink to this headline">#</a></h2>
+<p>The code in the cell below generates the word cloud image from the text that is stored in the <code class="docutils literal notranslate"><span class="pre">file_contents</span></code> variable using the <code class="docutils literal notranslate"><span class="pre">generate_from_frequencies()</span></code> function.</p>
+<p>The resulting image is then displayed using the <code class="docutils literal notranslate"><span class="pre">plt.show()</span></code> and <code class="docutils literal notranslate"><span class="pre">plt.imshow()</span></code> functions with the addition of setting the figure size and turning off the axis label.</p>
+<p>Finally, a title is printed above the image.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_upload</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "f7a4028047be4b269b7aa5edd6c5a360", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Uploaded `lucy.txt` (1.17 kB)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myimage</span> <span class="o">=</span> <span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">myimage</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 1&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The Beatles - Lucy in the Sky With Diamonds&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 1
+The Beatles - Lucy in the Sky With Diamonds
+</pre></div>
+</div>
+<img alt="_images/final_project-2_11_1.png" src="_images/final_project-2_11_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_upload</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "4ef4918ff64f4485b989a281b4f403ce", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Uploaded `russell.txt` (32.02 kB)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">newimage</span> <span class="o">=</span> <span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">newimage</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 2&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Chapter 1 - Problems of Philosophy by Bertrand Russell&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 2
+Chapter 1 - Problems of Philosophy by Bertrand Russell
+</pre></div>
+</div>
+<img alt="_images/final_project-2_13_1.png" src="_images/final_project-2_13_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_upload</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "35cb8060be6e4341943061e839d82e88", "version_major": 2, "version_minor": 0}
+</script><div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Uploaded `do_not_gentle.txt` (0.85 kB)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">another_image</span> <span class="o">=</span> <span class="n">generate_from_frequencies</span><span class="p">(</span><span class="n">file_contents</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">another_image</span><span class="p">,</span> <span class="n">interpolation</span> <span class="o">=</span> <span class="s1">&#39;nearest&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Run 3&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Do not go gentle into that good night - Dylan Thomas&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Run 3
+Do not go gentle into that good night - Dylan Thomas
+</pre></div>
+</div>
+<img alt="_images/final_project-2_15_1.png" src="_images/final_project-2_15_1.png" />
+</div>
+</div>
+<hr class="docutils" />
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="exercise_notebook.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Exercise Book: Methods and Classes</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="bibliography.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Bibliography</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By Rajdeep Chakraborty<br/>
+  
+      &copy; Copyright 2023.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
