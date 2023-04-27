@@ -1,0 +1,18 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: nb1-2
+- file: nb2-2
+- file: nb3-2
+- file: strings
+- file: lists
+- file: dict
+- file: exercises
+- file: oop
+- file: exercise_notebook
+- file: final_project-2
+- file: bibliography
+
